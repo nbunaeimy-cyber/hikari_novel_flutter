@@ -6,7 +6,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../../router/route_path.dart';
 import '../../../network/request.dart';
 
-//FIXME 切换深浅模式时，字体颜色不能对应
 class VerticalReadPage extends StatefulWidget {
   final String text;
   final List<String> images;
@@ -140,6 +139,7 @@ class _VerticalReadPageState extends State<VerticalReadPage> with WidgetsBinding
       s.height,
       s.letterSpacing,
       s.wordSpacing,
+      s.color?.toARGB32(),
       p.left,
       p.right,
       p.top,
