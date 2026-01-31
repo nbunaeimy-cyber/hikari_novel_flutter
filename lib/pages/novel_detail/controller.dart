@@ -10,6 +10,7 @@ import 'package:hikari_novel_flutter/models/reader_direction.dart';
 import 'package:hikari_novel_flutter/network/parser.dart';
 import 'package:hikari_novel_flutter/pages/bookshelf/controller.dart';
 import 'package:hikari_novel_flutter/pages/cache_queue/controller.dart';
+import 'package:hikari_novel_flutter/widgets/state_page.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -264,13 +265,7 @@ class NovelDetailController extends GetxController {
         }
       case Error():
         {
-          Get.dialog(
-            AlertDialog(
-              title: Text("error".tr),
-              content: Text(result.error.toString()),
-              actions: [TextButton(onPressed: Get.back, child: Text("confirm".tr))],
-            ),
-          );
+          showErrorDialog(result.error.toString(), [TextButton(onPressed: Get.back, child: Text("confirm".tr))]);
         }
     }
     _isAdding = false;
@@ -290,13 +285,7 @@ class NovelDetailController extends GetxController {
         }
       case Error():
         {
-          Get.dialog(
-            AlertDialog(
-              title: Text("error".tr),
-              content: Text(result.error.toString()),
-              actions: [TextButton(onPressed: Get.back, child: Text("confirm".tr))],
-            ),
-          );
+          showErrorDialog(result.error.toString(), [TextButton(onPressed: Get.back, child: Text("confirm".tr))]);
         }
     }
     _isRemoving = false;

@@ -395,7 +395,8 @@ class _NovelDetailPageState extends State<NovelDetailPage> {
                           chapterSubtitleColor = Theme.of(context).disabledColor;
                         }
 
-                        final cacheString = controller.cachedChapter.contains(chapter.cid) ? " • ${"cached".tr}" : "";
+                        var cacheString = controller.cachedChapter.contains(chapter.cid) ? " • ${"cached".tr}" : "";
+                        var lastReadString = readHistory?.isLatest == true ? "${"last_read".tr} • " : "";
 
                         return ListTile(
                           leading: controller.isSelectionMode.value
@@ -403,7 +404,7 @@ class _NovelDetailPageState extends State<NovelDetailPage> {
                               : null,
                           title: Text(chapter.title, style: TextStyle(fontSize: 13, color: chapterTitleColor)),
                           subtitle: Text(
-                            controller.getReadHistoryProgressByCid(chapterSnapshot.data) + cacheString,
+                            lastReadString + controller.getReadHistoryProgressByCid(chapterSnapshot.data) + cacheString,
                             style: TextStyle(fontSize: 13, color: chapterSubtitleColor),
                             overflow: TextOverflow.clip,
                           ),
